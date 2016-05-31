@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Date;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -21,6 +23,7 @@ import edu.galileo.android.tipcalc.R;
 import edu.galileo.android.tipcalc.TipCalcApp;
 import edu.galileo.android.tipcalc.fragments.TipHistoryListFragment;
 import edu.galileo.android.tipcalc.fragments.TipHistoryListFragmentListener;
+import edu.galileo.android.tipcalc.models.TipRecord;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -78,9 +81,15 @@ public class MainActivity extends AppCompatActivity {
         if (!strInputTotal.isEmpty()) {
             double total = Double.parseDouble(strInputTotal);
             int tipPercentage = getTipPercentage();
+
+            TipRecord tipRecord = new TipRecord();
+            tipRecord.setBill(total);
+            tipRecord.setTipPercentage(tipPercentage);
+            tipRecord.setTimestamp(new Date());
             double tip = total * (tipPercentage / 100d);
-            String strTip = String.format(getString(R.string.global_message_tip), tip);
-            fragmentListener.action(strTip);
+            String strTip = String.format(getString(R.string.global_message_tip),
+                    tipRecord.getTip());
+            fragmentListener.addToList(tipRecord);
             txtTip.setVisibility(View.VISIBLE);
             txtTip.setText(strTip);
         }
