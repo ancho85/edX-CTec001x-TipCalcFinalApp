@@ -16,4 +16,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
+    <fragment
+        android:id="@+id/fragmentList"
+        android:name="edu.galileo.android.tipcalc.TipHistoryListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tipContent"
+        tools:layout="@layout/fragment_tip_history_list"/>
+
 </RelativeLayout>
