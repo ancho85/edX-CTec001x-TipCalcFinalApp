@@ -1,4 +1,4 @@
-package edu.galileo.android.tipcalc;
+package edu.galileo.android.tipcalc.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +17,8 @@ import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import edu.galileo.android.tipcalc.R;
+import edu.galileo.android.tipcalc.TipCalcApp;
 
 public class MainActivity extends AppCompatActivity {
 
