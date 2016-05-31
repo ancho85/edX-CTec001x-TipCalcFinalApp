@@ -19,6 +19,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.galileo.android.tipcalc.R;
 import edu.galileo.android.tipcalc.TipCalcApp;
+import edu.galileo.android.tipcalc.fragments.TipHistoryListFragment;
+import edu.galileo.android.tipcalc.fragments.TipHistoryListFragmentListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.txtTip)
     TextView txtTip;
 
+    private TipHistoryListFragmentListener fragmentListener;
+
     private static final int TIP_STEP_CHANGE = 1;
     private static final int DEFAULT_TIP_PERCENTAGE = 10;
 
@@ -46,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main); //right click must be on this line for Zelezny plugin to show up in Generate menu
         ButterKnife.bind(this);
 
+
+        TipHistoryListFragment fragment = (TipHistoryListFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.fragmentList);
+        fragment.setRetainInstance(true); //fragmento retiene instancia para que no este recreando al cambiar conf, rotar pantalla, etc.
+        fragmentListener = (TipHistoryListFragmentListener) fragment;
     }
 
     @Override
@@ -71,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             int tipPercentage = getTipPercentage();
             double tip = total * (tipPercentage / 100d);
             String strTip = String.format(getString(R.string.global_message_tip), tip);
+            fragmentListener.action(strTip);
             txtTip.setVisibility(View.VISIBLE);
             txtTip.setText(strTip);
         }
