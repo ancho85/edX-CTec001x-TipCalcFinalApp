@@ -29,16 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Bind(R.id.inputBill)
     EditText inputBill;
-    @Bind(R.id.btnSubmit)
-    Button btnSubmit;
     @Bind(R.id.inputPercentage)
     EditText inputPercentage;
-    @Bind(R.id.btnIncrease)
-    Button btnIncrease;
-    @Bind(R.id.btnDecrease)
-    Button btnDecrease;
-    @Bind(R.id.btnClear)
-    Button btnClear;
     @Bind(R.id.txtTip)
     TextView txtTip;
 
@@ -106,6 +98,11 @@ public class MainActivity extends AppCompatActivity {
     public void handleClickDecrease() {
         hideKeyboard();
         handleTipChange(-TIP_STEP_CHANGE);
+    }
+
+    @OnClick(R.id.btnClear)
+    public void handleClickClear(){
+        fragmentListener.clearList();
     }
 
     private void handleTipChange(int change) {
