@@ -1,4 +1,4 @@
-# edX-CTec001x-TipCalc
+# edX-CTec001x-TipCalcFinalApp
 Calculadora de propinas Final APP.
 
 ## TODO:
