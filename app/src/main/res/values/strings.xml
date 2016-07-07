@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TipCalc</string>
+    <string name="app_name">TipCalcFinalApp</string>
     <string name="main.button.submit">Calcular</string>
     <string name="main.hint.bill">Total</string>
     <string name="main.hint.percentage">% de propina</string>
