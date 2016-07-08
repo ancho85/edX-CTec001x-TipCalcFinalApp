@@ -3,6 +3,7 @@ package edu.galileo.android.tipcalc.entities;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,7 +15,7 @@ import edu.galileo.android.tipcalc.db.TipCalcFinalAppDatabase;
  * Created by carlos.gomez on 31/05/2016.
  */
 @Table(database = TipCalcFinalAppDatabase.class)
-public class TipRecordPremium {
+public class TipRecordPremium extends BaseModel {
     @PrimaryKey
     private int tipId;
     @Column
@@ -62,7 +63,7 @@ public class TipRecordPremium {
         this.tipId = tipId;
     }
 
-    public double getTipId() {
+    public int getTipId() {
         return tipId;
     }
 
