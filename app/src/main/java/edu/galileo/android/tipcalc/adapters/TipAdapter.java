@@ -13,7 +13,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import edu.galileo.android.tipcalc.R;
-import edu.galileo.android.tipcalc.models.TipRecord;
+import edu.galileo.android.tipcalc.entities.TipRecord;
 
 /**
  * Created by carlos.gomez on 31/05/2016.

@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".activities.MainActivity">
+    tools:context=".tipcalc.ui.MainActivity">
 
     <include
         android:id="@+id/tipContent"
@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/fragmentList"
-        android:name="edu.galileo.android.tipcalc.fragments.TipHistoryListFragment"
+        android:name="edu.galileo.android.tipcalc.tipcalc.ui.TipHistoryListFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tipContent"

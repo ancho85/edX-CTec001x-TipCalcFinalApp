@@ -1,4 +1,4 @@
-package edu.galileo.android.tipcalc.models;
+package edu.galileo.android.tipcalc.entities;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package edu.galileo.android.tipcalc.fragments;
+package edu.galileo.android.tipcalc.tipcalc.ui;
 
 
 import android.content.Intent;
@@ -9,17 +9,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import edu.galileo.android.tipcalc.R;
-import edu.galileo.android.tipcalc.activities.TipDetailActivity;
 import edu.galileo.android.tipcalc.adapters.OnItemClickListener;
 import edu.galileo.android.tipcalc.adapters.TipAdapter;
-import edu.galileo.android.tipcalc.models.TipRecord;
+import edu.galileo.android.tipcalc.entities.TipRecord;
 
 
 /**

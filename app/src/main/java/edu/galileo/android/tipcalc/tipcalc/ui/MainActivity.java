@@ -1,4 +1,4 @@
-package edu.galileo.android.tipcalc.activities;
+package edu.galileo.android.tipcalc.tipcalc.ui;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -21,9 +20,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.galileo.android.tipcalc.R;
 import edu.galileo.android.tipcalc.TipCalcApp;
-import edu.galileo.android.tipcalc.fragments.TipHistoryListFragment;
-import edu.galileo.android.tipcalc.fragments.TipHistoryListFragmentListener;
-import edu.galileo.android.tipcalc.models.TipRecord;
+import edu.galileo.android.tipcalc.entities.TipRecord;
 
 public class MainActivity extends AppCompatActivity {
 

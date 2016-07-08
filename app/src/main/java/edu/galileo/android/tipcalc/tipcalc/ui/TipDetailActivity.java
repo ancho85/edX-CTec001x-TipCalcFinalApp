@@ -1,4 +1,4 @@
-package edu.galileo.android.tipcalc.activities;
+package edu.galileo.android.tipcalc.tipcalc.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
