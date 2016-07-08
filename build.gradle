@@ -6,6 +6,8 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.2'
+        //funcionalidad de anotaciones
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -15,6 +17,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven { url "https://jitpack.io" } //repositorio para DBFlow (ORM)
     }
 }
 
@@ -29,5 +32,22 @@ ext{
     buildToolsVersion = "24"
 
     supportLibraryVersion = "24.0.0"
+
+    playServicesLocationVersion = '8.4.0'
     butterknifeVersion = "7.0.1"
+    eventbusVersion = '3.0.0'
+    glideVersion = '3.6.1'
+    circleImageViewVersion = '2.0.0'
+    firebaseClientVersion = '2.5.2'
+    retrofitVersion = '2.0.0-beta4'
+    dbflowVersion = '3.0.0-beta3'
+    facebookVersion = '[4,5)'
+    daggerVersion = '2.0.1'
+    //dagger requiere esto para las anotaciones. esto viene en java7 pero android funciona en java6
+    jsr250Version = '1.0'
+
+    //versiones para librerias de tests
+    robolectricVersion = '3.0'
+    mockitoVersion = '1.10.19'
+    junitVersion = '4.12'
 }
