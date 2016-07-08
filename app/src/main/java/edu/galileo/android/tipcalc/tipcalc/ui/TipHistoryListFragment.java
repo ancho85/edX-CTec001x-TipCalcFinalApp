@@ -13,8 +13,8 @@ import android.view.ViewGroup;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import edu.galileo.android.tipcalc.R;
-import edu.galileo.android.tipcalc.adapters.OnItemClickListener;
-import edu.galileo.android.tipcalc.adapters.TipAdapter;
+import edu.galileo.android.tipcalc.tipcalc.adapters.OnItemClickListener;
+import edu.galileo.android.tipcalc.tipcalc.adapters.TipAdapter;
 import edu.galileo.android.tipcalc.entities.TipRecord;
 
 

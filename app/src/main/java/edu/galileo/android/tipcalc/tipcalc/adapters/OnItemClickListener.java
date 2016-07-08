@@ -1,4 +1,4 @@
-package edu.galileo.android.tipcalc.adapters;
+package edu.galileo.android.tipcalc.tipcalc.adapters;
 
 import edu.galileo.android.tipcalc.entities.TipRecord;
 

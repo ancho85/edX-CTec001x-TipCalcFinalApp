@@ -1,4 +1,4 @@
-package edu.galileo.android.tipcalc.adapters;
+package edu.galileo.android.tipcalc.tipcalc.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
