@@ -52,4 +52,12 @@ public class FirebaseHelper {
     public Firebase getMyUserReference() {
         return getUserReference(getAuthUserId());
     }
+
+    public void signOff(){
+        dataReference.unauth();
+    }
+
+    public Firebase getTipsReference(){
+        return dataReference.getRoot().child(TIPS_PATH).child(getAuthUserId());
+    }
 }
