@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context=".tipcalcpremium.TipCalcPremiumActivity">
+    <item
+        android:id="@+id/action_logout"
+        android:title="@string/tipcalcpremium.menu.action.facebooklogout"
+        app:showAsAction="never"/> <!-- esto hace que muestre en los 3 puntitos -->
+</menu>
