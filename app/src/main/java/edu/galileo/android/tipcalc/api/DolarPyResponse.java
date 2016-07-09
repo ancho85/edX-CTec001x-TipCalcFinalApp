@@ -28,7 +28,7 @@ public class DolarPyResponse {
         this.dolarPyList = dolarPyLists;
     }
 
-    public DolarPy getFirstRecipe() {
+    public DolarPy getFirstDolarPy() {
         DolarPy first = null;
         if (!dolarPyList.isEmpty()) {
             first = dolarPyList.get(0);
