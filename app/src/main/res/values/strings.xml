@@ -11,4 +11,7 @@
 
     <string name="global.message.tip">Propina %,.1f</string>
     <string name="tipdetail.message.bill">Total %,.1f</string>
+    <string name="tipcalc.menu.action.premium">Activar premium</string>
+    <string name="login.error">Imposible iniciar sesión %s</string>
+    <string name="login.cancel.error">Inicio de sesión cancelado</string>
 </resources>

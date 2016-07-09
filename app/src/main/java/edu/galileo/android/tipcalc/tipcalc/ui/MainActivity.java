@@ -21,6 +21,7 @@ import butterknife.OnClick;
 import edu.galileo.android.tipcalc.R;
 import edu.galileo.android.tipcalc.TipCalcApp;
 import edu.galileo.android.tipcalc.entities.TipRecord;
+import edu.galileo.android.tipcalc.login.ui.FacebookLoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_about) {
             about();
+        }else if (item.getItemId() == R.id.action_premium){
+            startFacebookLogin();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -139,5 +142,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(strUrl));
         startActivity(intent);
+    }
+
+    private void startFacebookLogin() {
+        startActivity(new Intent(this, FacebookLoginActivity.class));
     }
 }

@@ -4,6 +4,11 @@
       xmlns:tools="http://schemas.android.com/tools"
       tools:context=".tipcalc.ui.MainActivity">
     <item
+        android:id="@+id/action_premium"
+        android:icon="@android:drawable/btn_star_big_on"
+        android:title="@string/tipcalc.menu.action.premium"
+        app:showAsAction="ifRoom"/>
+    <item
         android:id="@+id/action_about"
         android:title="@string/main.menu.action.about"
         app:showAsAction="never"/>

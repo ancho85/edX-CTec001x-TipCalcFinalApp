@@ -44,6 +44,11 @@
             android:name="com.facebook.FacebookContentProvider"
             android:authorities="@string/FACEBOOK_PROVIDER_AUTH"
             android:exported="false"/>
+
+        <activity android:name=".tipcalcpremium.TipCalcPremiumActivity">
+        </activity>
+        <activity android:name=".login.ui.FacebookLoginActivity">
+        </activity>
     </application>
 
 </manifest>
