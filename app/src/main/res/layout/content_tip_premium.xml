@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/inputBill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:hint="@string/main.hint.bill"
+        android:inputType="numberDecimal"/>
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@id/inputBill"
+        android:layout_toRightOf="@id/inputBill"
+        android:text="@string/main.button.submit"/>
+
+    <EditText
+        android:id="@+id/inputPercentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnIncrease"
+        android:layout_toLeftOf="@+id/btnIncrease"
+        android:layout_toStartOf="@+id/btnIncrease"
+        android:ems="10"
+        android:hint="@string/main.hint.percentage"
+        android:inputType="numberSigned"/>
+
+    <Button
+        android:id="@+id/btnIncrease"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/btnSubmit"
+        android:layout_alignStart="@id/btnSubmit"
+        android:layout_below="@id/btnSubmit"
+        android:text="@string/main.button.increase"/>
+
+    <Button
+        android:id="@+id/btnDecrease"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/btnIncrease"
+        android:layout_toEndOf="@id/btnIncrease"
+        android:layout_toRightOf="@id/btnIncrease"
+        android:text="@string/main.button.decrease"/>
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_alignEnd="@id/btnSubmit"
+        android:layout_alignLeft="@id/btnClear"
+        android:layout_alignRight="@id/btnSubmit"
+        android:layout_below="@id/inputPercentage"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@android:color/darker_gray"/>
+
+    <TextView
+        android:id="@+id/txtTip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/separator"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:visibility="gone"/>
+</RelativeLayout>
