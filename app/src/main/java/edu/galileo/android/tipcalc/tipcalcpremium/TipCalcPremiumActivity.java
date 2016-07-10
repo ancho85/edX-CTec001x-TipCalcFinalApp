@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +19,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import edu.galileo.android.tipcalc.R;
 import edu.galileo.android.tipcalc.TipCalcApp;
+import edu.galileo.android.tipcalc.tipcalcpremium.adapters.TipCalcPremiumPagerAdapter;
+import edu.galileo.android.tipcalc.tipcalcpremium.ui.ExtraFragment;
+import edu.galileo.android.tipcalc.tipcalcpremium.ui.HistoryFragment;
 
 public class TipCalcPremiumActivity extends AppCompatActivity {
 
@@ -52,7 +56,20 @@ public class TipCalcPremiumActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tip_calc_premium);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+        setupAdapter();
     }
+
+    private void setupAdapter() {
+            Fragment[] fragments = new Fragment[]{new HistoryFragment(), new ExtraFragment()};
+            String[] titles = new String[]{
+                    getString(R.string.tipcalcpremium_header_history),
+                    getString(R.string.tipcalcpremium_header_extra)};
+            TipCalcPremiumPagerAdapter adapter =
+                    new TipCalcPremiumPagerAdapter(getSupportFragmentManager(),
+                            titles, fragments);
+            container.setAdapter(adapter);
+            tabs.setupWithViewPager(container);
+        }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

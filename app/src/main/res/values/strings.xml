@@ -15,4 +15,6 @@
     <string name="login.error">Imposible iniciar sesión %s</string>
     <string name="login.cancel.error">Inicio de sesión cancelado</string>
     <string name="tipcalcpremium.menu.action.facebooklogout">Cerrar premium</string>
+    <string name="tipcalcpremium_header_history">Historial</string>
+    <string name="tipcalcpremium_header_extra">Extra</string>
 </resources>
