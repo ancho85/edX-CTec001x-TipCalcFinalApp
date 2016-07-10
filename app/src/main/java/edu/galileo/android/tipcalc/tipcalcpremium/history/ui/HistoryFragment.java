@@ -96,18 +96,8 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
     }
 
     @Override
-    public void tipNotAdded() {
-        showError("Tip not added correctly");
-    }
-
-    @Override
-    public void tipDelete() {
+    public void tipDeleted() {
         showError("NO IMPLEMENTADO! borrar tip");
-    }
-
-    @Override
-    public void tipNotDeleted() {
-        showError("Tip not deleted correctly");
     }
 
     @Override

@@ -1,5 +1,6 @@
 package edu.galileo.android.tipcalc.tipcalcpremium.history.mvp;
 
+import edu.galileo.android.tipcalc.entities.TipRecordPremium;
 import edu.galileo.android.tipcalc.tipcalcpremium.history.events.HistoryEvent;
 
 /**
@@ -9,9 +10,9 @@ public interface HistoryPresenter {
     void onResume();
     void onPause();
     void onDestroy();
-    void getTipHistory();
+    void getTipHistory(String facebookUserId);
     void onEventMainThread(HistoryEvent event);
 
-    void addTip();
-    void deleteTip();
+    void addTip(TipRecordPremium tipRecordPremium);
+    void deleteTip(TipRecordPremium tipRecordPremium);
 }
