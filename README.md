@@ -7,11 +7,11 @@ Calculadora de propinas Final APP.
 - [x] Vista premium acceso vía menú a una actividad de login de facebook.
 - [x] Vista premium activado una vez logueado a facebook (y firebase)
 - [x] Vista premium desactivado una vez deslogueado de facebook.
-- [ ] Coordinator Layout para agrupar ambas vistas
-- [ ] TabLayout para poner la sección de ExtraStaff
+- [x] Coordinator Layout para agrupar ambas vistas
+- [x] TabLayout para poner la sección de ExtraStaff
 - [ ] HorizontalScrollView + LinearLayout + button rounded corner background para selección de continente
 - [ ] HorizontalScrollView + LinearLayout + button rounded corner background para selección de clasificación de servicio
-- [ ] ViewPager que incluirá CardViews del histórico de propinas
+- [x] ViewPager que incluirá CardViews del histórico de propinas
 - [ ] Cada propina calculada guardará la ubicación donde se hizo el cálculo
 - [ ] Cada propina podrá ser compartida en facebook app y en el messenger
 - [x] Retrofit para obtener cotización de moneda paraguaya desde api
