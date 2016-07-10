@@ -45,7 +45,8 @@
             android:authorities="@string/FACEBOOK_PROVIDER_AUTH"
             android:exported="false"/>
 
-        <activity android:name=".tipcalcpremium.TipCalcPremiumActivity">
+        <activity android:name=".tipcalcpremium.TipCalcPremiumActivity"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity android:name=".login.ui.FacebookLoginActivity">
         </activity>
