@@ -1,4 +1,4 @@
-package edu.galileo.android.tipcalc.tipcalcpremium.ui;
+package edu.galileo.android.tipcalc.tipcalcpremium.history.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

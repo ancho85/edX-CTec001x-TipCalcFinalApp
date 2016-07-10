@@ -20,8 +20,8 @@ import butterknife.ButterKnife;
 import edu.galileo.android.tipcalc.R;
 import edu.galileo.android.tipcalc.TipCalcApp;
 import edu.galileo.android.tipcalc.tipcalcpremium.adapters.TipCalcPremiumPagerAdapter;
-import edu.galileo.android.tipcalc.tipcalcpremium.ui.ExtraFragment;
-import edu.galileo.android.tipcalc.tipcalcpremium.ui.HistoryFragment;
+import edu.galileo.android.tipcalc.tipcalcpremium.extra.ui.ExtraFragment;
+import edu.galileo.android.tipcalc.tipcalcpremium.history.ui.HistoryFragment;
 
 public class TipCalcPremiumActivity extends AppCompatActivity {
 
