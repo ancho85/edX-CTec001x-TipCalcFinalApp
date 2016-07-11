@@ -2,6 +2,8 @@ package edu.galileo.android.tipcalc.tipcalcpremium.history.mvp;
 
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import edu.galileo.android.tipcalc.domain.FirebaseHelper;
@@ -23,7 +25,9 @@ public class HistoryRepositoryImpl implements HistoryRepository {
 
     @Override
     public void getTipHistory(String facebookUserId) {
-        Log.e("REPOSITORY", "getting tip history");
+        List<TipRecordPremium> items = new ArrayList<>();
+        post(items, HistoryEvent.onHistoryRetrieved);
+        Log.e("REPOSITORY", "getting tip history for facebook user id: " + facebookUserId);
     }
 
     @Override
@@ -50,11 +54,15 @@ public class HistoryRepositoryImpl implements HistoryRepository {
                 post("Error onCancelled: " + firebaseError.getMessage(), HistoryEvent.onHistoryAdded);
             }
         });*/
+        List<TipRecordPremium> items = Arrays.asList(tipRecordPremium);
+        post(items, HistoryEvent.onHistoryAdded);
         Log.e("REPOSITORY", "save tip");
     }
 
     @Override
     public void deleteTip(TipRecordPremium tipRecordPremium) {
+        List<TipRecordPremium> items = Arrays.asList(tipRecordPremium);
+        post(items, HistoryEvent.onHistoryRemoved);
         Log.e("REPOSITORY", "delete tip");
     }
 

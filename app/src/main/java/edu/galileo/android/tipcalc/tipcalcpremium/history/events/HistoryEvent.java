@@ -10,6 +10,7 @@ import edu.galileo.android.tipcalc.entities.TipRecordPremium;
 public class HistoryEvent {
     public final static int onHistoryAdded = 0;
     public final static int onHistoryRemoved = 1;
+    public final static int onHistoryRetrieved = 2;
 
     private String error;
     private List<TipRecordPremium> tipRecordPremiumList;

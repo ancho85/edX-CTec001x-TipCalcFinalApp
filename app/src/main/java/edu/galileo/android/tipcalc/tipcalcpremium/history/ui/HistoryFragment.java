@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import butterknife.Bind;
@@ -55,20 +53,6 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
 
     private void setupRecyclerView() {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        List<TipRecordPremium> testTipList = new ArrayList<>();
-        TipRecordPremium tip;
-        for (int i = 0; i < 5; i++) {
-            tip = new TipRecordPremium();
-            tip.setTipId(i);
-            tip.setFacebookUserId(String.valueOf(i));
-            tip.setBill(i+200);
-            tip.setTipPercentage(i+3);
-            tip.setLatitutde(53.5);
-            tip.setLongitude(-127.1);
-            tip.setTimestamp(new Date());
-            testTipList.add(tip);
-        }
-        adapter.setItems(testTipList);
         recyclerView.setAdapter(adapter);
     }
 
@@ -125,17 +109,17 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
 
     @Override
     public void tipAdded() {
-        showError("NO IMPLEMENTADO! agregar tip");
+        showSnackbar("Propina agregada");
     }
 
     @Override
     public void tipDeleted() {
-        showError("NO IMPLEMENTADO! borrar tip");
+        showSnackbar("Propina borrada");
     }
 
     @Override
     public void onError(String error) {
-        showError(error);
+        showSnackbar(error);
     }
 
     @Override
@@ -145,16 +129,17 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
 
     @Override
     public void onItemClick(TipRecordPremium tipRecordPremium) {
-        showError("NO IMPLEMENTADO! click sobre id:" + tipRecordPremium.getTipId());
+        presenter.addTip(tipRecordPremium);
     }
 
     @Override
     public void onItemLongClick(TipRecordPremium tipRecordPremium) {
+        presenter.deleteTip(tipRecordPremium);
         deleteFromHistory(tipRecordPremium);
     }
 
-    private void showError(String error) {
-        Snackbar.make(framelayoutcontainer, error, Snackbar.LENGTH_SHORT).show();
+    private void showSnackbar(String msgText) {
+        Snackbar.make(framelayoutcontainer, msgText, Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
@@ -165,7 +150,6 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
     @Override
     public void deleteFromHistory(TipRecordPremium tipRecordPremium) {
         adapter.delete(tipRecordPremium);
-        tipDeleted();
     }
 
 }

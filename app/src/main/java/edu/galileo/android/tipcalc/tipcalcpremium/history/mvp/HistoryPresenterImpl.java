@@ -39,6 +39,8 @@ public class HistoryPresenterImpl implements HistoryPresenter {
     @Override
     public void getTipHistory(String facebookUserId) {
         if (view != null) {
+            view.hideElements();
+            view.showProgress();
             interactor.getTipHistory(facebookUserId);
         }
     }
@@ -75,6 +77,9 @@ public class HistoryPresenterImpl implements HistoryPresenter {
                     view.tipAdded();
                 } else if (event.getEventType() == HistoryEvent.onHistoryRemoved) {
                     view.tipDeleted();
+                } else if (event.getEventType() == HistoryEvent.onHistoryRetrieved){
+                    // view.setContent(event.getTipRecordPremiumList());
+                    // lo mismo que abajo
                 }
                 view.setContent(event.getTipRecordPremiumList());
             }
