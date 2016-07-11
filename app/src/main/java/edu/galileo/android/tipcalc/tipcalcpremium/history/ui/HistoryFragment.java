@@ -3,6 +3,7 @@ package edu.galileo.android.tipcalc.tipcalcpremium.history.ui;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.Bind;
@@ -46,7 +49,27 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
         View view = inflater.inflate(R.layout.fragment_content, container, false);
         ButterKnife.bind(this, view);
         setupInjection();
+        setupRecyclerView();
         return view;
+    }
+
+    private void setupRecyclerView() {
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        List<TipRecordPremium> testTipList = new ArrayList<>();
+        TipRecordPremium tip;
+        for (int i = 0; i < 5; i++) {
+            tip = new TipRecordPremium();
+            tip.setTipId(i);
+            tip.setFacebookUserId(String.valueOf(i));
+            tip.setBill(i+200);
+            tip.setTipPercentage(i+3);
+            tip.setLatitutde(53.5);
+            tip.setLongitude(-127.1);
+            tip.setTimestamp(new Date());
+            testTipList.add(tip);
+        }
+        adapter.setItems(testTipList);
+        recyclerView.setAdapter(adapter);
     }
 
     private void setupInjection() {
