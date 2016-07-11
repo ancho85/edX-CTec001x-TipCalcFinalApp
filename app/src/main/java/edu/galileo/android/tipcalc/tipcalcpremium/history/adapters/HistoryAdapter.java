@@ -48,6 +48,24 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         notifyDataSetChanged();
     }
 
+    public void add(TipRecordPremium tipRecordPremium){
+        items.add(0, tipRecordPremium);
+        notifyItemInserted(getItemCount()-1);
+        notifyDataSetChanged();
+    }
+
+    public void delete(TipRecordPremium tipRecordPremium){
+        int position = 0;
+        for (TipRecordPremium item: items){
+            if (item.getTipId() == tipRecordPremium.getTipId()){
+                items.remove(position);
+                notifyDataSetChanged();
+                break;
+            }
+            position++;
+        }
+    }
+
     @Override
     public int getItemCount() {
         return items.size();
@@ -80,6 +98,13 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 @Override
                 public void onClick(View v) {
                     listener.onItemClick(tipRecordPremium);
+                }
+            });
+            view.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    listener.onItemLongClick(tipRecordPremium);
+                    return false;
                 }
             });
         }

@@ -7,4 +7,5 @@ import edu.galileo.android.tipcalc.entities.TipRecordPremium;
  */
 public interface OnItemClickListener {
     void onItemClick(TipRecordPremium tipRecordPremium);
+    void onItemLongClick(TipRecordPremium tipRecordPremium);
 }

@@ -29,7 +29,7 @@ import edu.galileo.android.tipcalc.tipcalcpremium.history.mvp.HistoryView;
 /**
  * Created by carlos.gomez on 10/07/2016.
  */
-public class HistoryFragment extends Fragment implements HistoryView, OnItemClickListener {
+public class HistoryFragment extends Fragment implements HistoryView, OnItemClickListener, HistoryFragmentListener {
     @Bind(R.id.progressBar)
     ProgressBar progressBar;
     @Bind(R.id.recyclerView)
@@ -148,7 +148,24 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
         showError("NO IMPLEMENTADO! click sobre id:" + tipRecordPremium.getTipId());
     }
 
+    @Override
+    public void onItemLongClick(TipRecordPremium tipRecordPremium) {
+        deleteFromHistory(tipRecordPremium);
+    }
+
     private void showError(String error) {
         Snackbar.make(framelayoutcontainer, error, Snackbar.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void addToHistory(TipRecordPremium tipRecordPremium) {
+        adapter.add(tipRecordPremium);
+    }
+
+    @Override
+    public void deleteFromHistory(TipRecordPremium tipRecordPremium) {
+        adapter.delete(tipRecordPremium);
+        tipDeleted();
+    }
+
 }
