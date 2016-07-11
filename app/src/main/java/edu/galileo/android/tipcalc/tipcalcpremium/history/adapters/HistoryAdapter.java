@@ -20,6 +20,11 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     private List<TipRecordPremium> items;
     private OnItemClickListener clickListener;
 
+    public HistoryAdapter(List<TipRecordPremium> items, OnItemClickListener clickListener) {
+        this.items = items;
+        this.clickListener = clickListener;
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.content_history, parent, false);
