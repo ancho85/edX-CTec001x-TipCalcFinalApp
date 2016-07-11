@@ -15,9 +15,11 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import edu.galileo.android.tipcalc.R;
+import edu.galileo.android.tipcalc.TipCalcApp;
 import edu.galileo.android.tipcalc.entities.TipRecordPremium;
 import edu.galileo.android.tipcalc.tipcalcpremium.history.adapters.HistoryAdapter;
 import edu.galileo.android.tipcalc.tipcalcpremium.history.adapters.OnItemClickListener;
+import edu.galileo.android.tipcalc.tipcalcpremium.history.di.HistoryComponent;
 import edu.galileo.android.tipcalc.tipcalcpremium.history.mvp.HistoryPresenter;
 import edu.galileo.android.tipcalc.tipcalcpremium.history.mvp.HistoryView;
 
@@ -43,7 +45,15 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_content, container, false);
         ButterKnife.bind(this, view);
+        setupInjection();
         return view;
+    }
+
+    private void setupInjection() {
+        TipCalcApp app = (TipCalcApp) getActivity().getApplication();
+        HistoryComponent historyComponent = app.getHistoryComponent(this, this, this);
+        presenter = historyComponent.getPresenter();
+        adapter = historyComponent.getAdapter();
     }
 
     @Override

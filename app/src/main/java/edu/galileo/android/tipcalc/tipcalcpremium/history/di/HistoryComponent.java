@@ -4,6 +4,7 @@ import javax.inject.Singleton;
 
 import dagger.Component;
 import edu.galileo.android.tipcalc.libs.di.LibsModule;
+import edu.galileo.android.tipcalc.tipcalcpremium.history.adapters.HistoryAdapter;
 import edu.galileo.android.tipcalc.tipcalcpremium.history.mvp.HistoryPresenter;
 
 /**
@@ -13,4 +14,5 @@ import edu.galileo.android.tipcalc.tipcalcpremium.history.mvp.HistoryPresenter;
 @Component(modules = {LibsModule.class, HistoryModule.class})
 public interface HistoryComponent {
     HistoryPresenter getPresenter();
+    HistoryAdapter getAdapter();
 }

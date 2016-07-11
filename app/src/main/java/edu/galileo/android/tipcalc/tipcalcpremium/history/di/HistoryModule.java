@@ -1,10 +1,16 @@
 package edu.galileo.android.tipcalc.tipcalcpremium.history.di;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import edu.galileo.android.tipcalc.entities.TipRecordPremium;
 import edu.galileo.android.tipcalc.libs.base.EventBus;
+import edu.galileo.android.tipcalc.tipcalcpremium.history.adapters.HistoryAdapter;
+import edu.galileo.android.tipcalc.tipcalcpremium.history.adapters.OnItemClickListener;
 import edu.galileo.android.tipcalc.tipcalcpremium.history.mvp.HistoryInteractor;
 import edu.galileo.android.tipcalc.tipcalcpremium.history.mvp.HistoryInteractorImpl;
 import edu.galileo.android.tipcalc.tipcalcpremium.history.mvp.HistoryPresenter;
@@ -19,15 +25,35 @@ import edu.galileo.android.tipcalc.tipcalcpremium.history.mvp.HistoryView;
 @Module
 public class HistoryModule {
     HistoryView view;
+    OnItemClickListener listener;
 
-    public HistoryModule(HistoryView view) {
+    public HistoryModule(HistoryView view, OnItemClickListener listener) {
         this.view = view;
+        this.listener = listener;
     }
 
     @Provides
     @Singleton
     HistoryView providesHistoryView() {
         return this.view;
+    }
+
+    @Provides
+    @Singleton
+    OnItemClickListener providesOnItemClickListener(){
+        return this.listener;
+    }
+
+    @Provides
+    @Singleton
+    HistoryAdapter providesHistoryAdapter(List<TipRecordPremium> items, OnItemClickListener clickListener){
+        return new HistoryAdapter(items, clickListener);
+    }
+
+    @Provides
+    @Singleton
+    List<TipRecordPremium> providesItemsList(){
+        return new ArrayList<TipRecordPremium>();
     }
 
     @Provides

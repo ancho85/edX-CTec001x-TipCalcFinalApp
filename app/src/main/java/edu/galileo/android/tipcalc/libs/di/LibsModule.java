@@ -1,6 +1,7 @@
 package edu.galileo.android.tipcalc.libs.di;
 
 import android.app.Activity;
+import android.support.v4.app.Fragment;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
@@ -20,9 +21,14 @@ import edu.galileo.android.tipcalc.libs.GreenRobotEventBus;
 @Module
 public class LibsModule {
     private Activity activity;
+    private Fragment fragment;
 
     public LibsModule(Activity activity) {
         this.activity = activity;
+    }
+
+    public LibsModule(Fragment fragment) {
+        this.fragment = fragment;
     }
 
     @Provides

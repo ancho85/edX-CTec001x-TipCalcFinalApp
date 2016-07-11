@@ -1,11 +1,7 @@
 package edu.galileo.android.tipcalc.tipcalcpremium.history.mvp;
 
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
+import android.util.Log;
 
-import java.util.Arrays;
 import java.util.List;
 
 import edu.galileo.android.tipcalc.domain.FirebaseHelper;
@@ -27,12 +23,12 @@ public class HistoryRepositoryImpl implements HistoryRepository {
 
     @Override
     public void getTipHistory(String facebookUserId) {
-
+        Log.e("REPOSITORY", "getting tip history");
     }
 
     @Override
     public void saveTip(final TipRecordPremium tipRecordPremium) {
-        Firebase userReference = firebaseHelper.getUserReference(tipRecordPremium.getFacebookUserId());
+        /*Firebase userReference = firebaseHelper.getUserReference(tipRecordPremium.getFacebookUserId());
         userReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -53,12 +49,13 @@ public class HistoryRepositoryImpl implements HistoryRepository {
             public void onCancelled(FirebaseError firebaseError) {
                 post("Error onCancelled: " + firebaseError.getMessage(), HistoryEvent.onHistoryAdded);
             }
-        });
+        });*/
+        Log.e("REPOSITORY", "save tip");
     }
 
     @Override
     public void deleteTip(TipRecordPremium tipRecordPremium) {
-
+        Log.e("REPOSITORY", "delete tip");
     }
 
 
