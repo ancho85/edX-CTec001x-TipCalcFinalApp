@@ -118,6 +118,10 @@ public class TipCalcPremiumActivity extends AppCompatActivity {
                     tipRecordPremium.getTip());
             txtTip.setVisibility(View.VISIBLE);
             txtTip.setText(strTip);
+
+            TipCalcPremiumPagerAdapter adapter = (TipCalcPremiumPagerAdapter) container.getAdapter();
+            HistoryFragment fragment = (HistoryFragment) adapter.getItem(0);
+            fragment.addToHistory(tipRecordPremium);
         }
     }
 
