@@ -73,6 +73,7 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
     public void onResume() {
         super.onResume();
         presenter.onResume();
+        presenter.getTipHistory("");
     }
 
     @Override
@@ -127,14 +128,13 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
         adapter.setItems(items);
     }
 
-    @Override
+    /*@Override
     public void onItemClick(TipRecordPremium tipRecordPremium) {
         presenter.addTip(tipRecordPremium);
-    }
+    }*/
 
     @Override
     public void onItemLongClick(TipRecordPremium tipRecordPremium) {
-        presenter.deleteTip(tipRecordPremium);
         deleteFromHistory(tipRecordPremium);
     }
 
@@ -144,11 +144,13 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
 
     @Override
     public void addToHistory(TipRecordPremium tipRecordPremium) {
+        presenter.addTip(tipRecordPremium);
         adapter.add(tipRecordPremium);
     }
 
     @Override
     public void deleteFromHistory(TipRecordPremium tipRecordPremium) {
+        presenter.deleteTip(tipRecordPremium);
         adapter.delete(tipRecordPremium);
     }
 

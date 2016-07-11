@@ -78,10 +78,8 @@ public class HistoryPresenterImpl implements HistoryPresenter {
                 } else if (event.getEventType() == HistoryEvent.onHistoryRemoved) {
                     view.tipDeleted();
                 } else if (event.getEventType() == HistoryEvent.onHistoryRetrieved){
-                    // view.setContent(event.getTipRecordPremiumList());
-                    // lo mismo que abajo
+                    view.setContent(event.getTipRecordPremiumList());
                 }
-                view.setContent(event.getTipRecordPremiumList());
             }
         }
     }
