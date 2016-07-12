@@ -32,7 +32,6 @@ public class HistoryPresenterImpl implements HistoryPresenter {
 
     @Override
     public void onDestroy() {
-        eventBus.unregister(this);
         view = null;
     }
 
