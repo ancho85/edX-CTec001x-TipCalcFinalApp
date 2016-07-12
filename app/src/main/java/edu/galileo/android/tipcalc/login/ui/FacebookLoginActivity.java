@@ -19,6 +19,7 @@ import java.util.Arrays;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import edu.galileo.android.tipcalc.R;
+import edu.galileo.android.tipcalc.domain.FacebookFirebaseHelper;
 import edu.galileo.android.tipcalc.tipcalcpremium.TipCalcPremiumActivity;
 
 public class FacebookLoginActivity extends AppCompatActivity {
@@ -27,14 +28,17 @@ public class FacebookLoginActivity extends AppCompatActivity {
     @Bind(R.id.container)
     RelativeLayout container;
     private CallbackManager callbackManager; //parte del sdk de facebook
+    private FacebookFirebaseHelper facebookFirebaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_facebook_login);
         ButterKnife.bind(this);
-
-        if (AccessToken.getCurrentAccessToken() != null) {
+        facebookFirebaseHelper = new FacebookFirebaseHelper();
+        AccessToken token = AccessToken.getCurrentAccessToken();
+        if (token != null) {
+            //facebookFirebaseHelper.authWithFirebase(token.getToken());
             navigateToMainScreen(); // si hay sesión iniciada, directo a la pantalla premium
         }
         callbackManager = CallbackManager.Factory.create();
@@ -60,6 +64,7 @@ public class FacebookLoginActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
     @Override
@@ -72,6 +77,12 @@ public class FacebookLoginActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         AppEventsLogger.deactivateApp(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        facebookFirebaseHelper.destroyTrackerAndListener();
     }
 
     @Override

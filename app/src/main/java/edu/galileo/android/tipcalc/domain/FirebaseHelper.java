@@ -36,7 +36,7 @@ public class FirebaseHelper {
         String userId = null;
         if (authData != null && authData.getProvider().equals("facebook")) {
             Map<String, Object> providerData = authData.getProviderData();
-            userId = providerData.get("uid").toString();
+            userId = providerData.get("id").toString();
         }
         return userId;
     }
@@ -58,6 +58,7 @@ public class FirebaseHelper {
     }
 
     public Firebase getTipsReference(){
-        return dataReference.getRoot().child(TIPS_PATH).child(getAuthUserId());
+        //return dataReference.getRoot().child(TIPS_PATH).child(getAuthUserId());
+        return getMyUserReference().child(TIPS_PATH);
     }
 }

@@ -2,6 +2,8 @@ package edu.galileo.android.tipcalc.tipcalcpremium.history.mvp;
 
 import android.util.Log;
 
+import com.firebase.client.Firebase;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,18 +18,22 @@ import edu.galileo.android.tipcalc.tipcalcpremium.history.events.HistoryEvent;
  */
 public class HistoryRepositoryImpl implements HistoryRepository {
     private EventBus eventBus;
+    private Firebase dataReference;
+    private Firebase userReference;
     private FirebaseHelper firebaseHelper;
 
     public HistoryRepositoryImpl(EventBus eventBus) {
         this.eventBus = eventBus;
         this.firebaseHelper = FirebaseHelper.getInstance();
+        this.dataReference = this.firebaseHelper.getDataReference();
+        this.userReference = this.firebaseHelper.getMyUserReference();
     }
 
     @Override
     public void getTipHistory(String facebookUserId) {
         List<TipRecordPremium> items = new ArrayList<>();
         post(items, HistoryEvent.onHistoryRetrieved);
-        Log.e("REPOSITORY", "getting tip history for facebook user id: " + facebookUserId);
+        Log.d("REPOSITORY", "getting tip history for facebook user id: " + facebookUserId);
     }
 
     @Override
@@ -56,14 +62,14 @@ public class HistoryRepositoryImpl implements HistoryRepository {
         });*/
         List<TipRecordPremium> items = Arrays.asList(tipRecordPremium);
         post(items, HistoryEvent.onHistoryAdded);
-        Log.e("REPOSITORY", "save tip");
+        Log.d("REPOSITORY", "save tip");
     }
 
     @Override
     public void deleteTip(TipRecordPremium tipRecordPremium) {
         List<TipRecordPremium> items = Arrays.asList(tipRecordPremium);
         post(items, HistoryEvent.onHistoryRemoved);
-        Log.e("REPOSITORY", "delete tip");
+        Log.d("REPOSITORY", "delete tip");
     }
 
 

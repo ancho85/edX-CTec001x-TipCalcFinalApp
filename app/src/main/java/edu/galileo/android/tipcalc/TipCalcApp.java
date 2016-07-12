@@ -9,6 +9,7 @@ import com.facebook.login.LoginManager;
 import com.firebase.client.Firebase;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
+import edu.galileo.android.tipcalc.domain.FirebaseHelper;
 import edu.galileo.android.tipcalc.libs.di.LibsModule;
 import edu.galileo.android.tipcalc.tipcalc.ui.MainActivity;
 import edu.galileo.android.tipcalc.tipcalcpremium.history.adapters.OnItemClickListener;
@@ -58,7 +59,12 @@ public class TipCalcApp extends Application {
         Firebase.getDefaultConfig().setPersistenceEnabled(true);
     }
 
+    private void logoutFirebase(){
+        FirebaseHelper.getInstance().signOff();
+    }
+
     public void logoutFacebook() {
+        logoutFirebase();
         LoginManager.getInstance().logOut();
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
