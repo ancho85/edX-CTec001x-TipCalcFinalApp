@@ -49,6 +49,7 @@ public class HistoryRepositoryImpl implements HistoryRepository {
                 tipReference.child("timestamp").setValue(tipRecordPremium.getDateFormatted());
                 tipReference.child("latitutde").setValue(tipRecordPremium.getLatitutde());
                 tipReference.child("longitude").setValue(tipRecordPremium.getLongitude());
+                tipReference.child("longitude").setValue(tipRecordPremium.getLongitude());
 
                 List<TipRecordPremium> items = Arrays.asList(tipRecordPremium);
                 post(items, HistoryEvent.onHistoryAdded);
@@ -59,16 +60,24 @@ public class HistoryRepositoryImpl implements HistoryRepository {
                 post("Error onCancelled: " + firebaseError.getMessage(), HistoryEvent.onHistoryAdded);
             }
         });
-        /*List<TipRecordPremium> items = Arrays.asList(tipRecordPremium);
-        post(items, HistoryEvent.onHistoryAdded);*/
-        Log.d("REPOSITORY", "save tip");
     }
 
     @Override
-    public void deleteTip(TipRecordPremium tipRecordPremium) {
-        List<TipRecordPremium> items = Arrays.asList(tipRecordPremium);
-        post(items, HistoryEvent.onHistoryRemoved);
-        Log.d("REPOSITORY", "delete tip");
+    public void deleteTip(final TipRecordPremium tipRecordPremium) {
+        dataReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String tipId = String.valueOf(tipRecordPremium.getTipId());
+                firebaseHelper.getMyTipsReference().child(tipId).removeValue();
+                List<TipRecordPremium> items = Arrays.asList(tipRecordPremium);
+                post(items, HistoryEvent.onHistoryRemoved);
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                post("Error onCancelled: " + firebaseError.getMessage(), HistoryEvent.onHistoryRemoved);
+            }
+        });
     }
 
 
