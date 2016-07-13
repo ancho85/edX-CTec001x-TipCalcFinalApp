@@ -3,7 +3,7 @@ Calculadora de propinas Final APP.
 
 ## TODO:
 - [x] Vista normal (anterior) intacta.
-- [ ] Firebase con Facebook login. Guardar propinas por cada usuario con acceso.
+- [x] Firebase con Facebook login. Guardar propinas por cada usuario con acceso.
 - [x] Vista premium acceso vía menú a una actividad de login de facebook.
 - [x] Vista premium activado una vez logueado a facebook (y firebase)
 - [x] Vista premium desactivado una vez deslogueado de facebook.
