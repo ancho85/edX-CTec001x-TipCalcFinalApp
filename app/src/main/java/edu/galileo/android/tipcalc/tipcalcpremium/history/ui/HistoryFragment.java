@@ -73,7 +73,7 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
     public void onResume() {
         super.onResume();
         presenter.onResume();
-        presenter.getTipHistory("");
+        presenter.getTipHistory();
     }
 
     @Override

@@ -10,7 +10,7 @@ public interface HistoryPresenter {
     void onResume();
     void onPause();
     void onDestroy();
-    void getTipHistory(String facebookUserId);
+    void getTipHistory();
     void onEventMainThread(HistoryEvent event);
 
     void addTip(TipRecordPremium tipRecordPremium);

@@ -8,5 +8,5 @@ import edu.galileo.android.tipcalc.entities.TipRecordPremium;
 public interface HistoryInteractor {
     void addTip(TipRecordPremium tipRecordPremium);
     void deleteTip(TipRecordPremium tipRecordPremium);
-    void getTipHistory(String facebookUserId);
+    void getTipHistory();
 }

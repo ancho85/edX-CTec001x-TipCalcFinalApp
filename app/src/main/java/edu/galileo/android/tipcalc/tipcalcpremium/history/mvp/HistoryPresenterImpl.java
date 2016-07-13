@@ -36,11 +36,11 @@ public class HistoryPresenterImpl implements HistoryPresenter {
     }
 
     @Override
-    public void getTipHistory(String facebookUserId) {
+    public void getTipHistory() {
         if (view != null) {
             view.hideElements();
             view.showProgress();
-            interactor.getTipHistory(facebookUserId);
+            interactor.getTipHistory();
         }
     }
 

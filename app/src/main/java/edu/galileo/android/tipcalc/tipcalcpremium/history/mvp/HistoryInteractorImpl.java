@@ -23,7 +23,7 @@ public class HistoryInteractorImpl implements HistoryInteractor {
     }
 
     @Override
-    public void getTipHistory(String facebookUserId) {
-        repository.getTipHistory(facebookUserId);
+    public void getTipHistory() {
+        repository.getTipHistory();
     }
 }
