@@ -17,7 +17,7 @@ import edu.galileo.android.tipcalc.db.TipCalcFinalAppDatabase;
 @Table(database = TipCalcFinalAppDatabase.class)
 public class TipRecordPremium extends BaseModel {
     @PrimaryKey
-    private int tipId;
+    private Long tipId;
     @Column
     private double bill;
     @Column
@@ -59,11 +59,11 @@ public class TipRecordPremium extends BaseModel {
         return bill * (tipPercentage / 100d);
     }
 
-    public void setTipId(int tipId) {
+    public void setTipId(Long tipId) {
         this.tipId = tipId;
     }
 
-    public int getTipId() {
+    public Long getTipId() {
         return tipId;
     }
 

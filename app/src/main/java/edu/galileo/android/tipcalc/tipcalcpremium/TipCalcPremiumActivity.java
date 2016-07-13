@@ -19,7 +19,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Date;
-import java.util.Random;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -113,8 +112,9 @@ public class TipCalcPremiumActivity extends AppCompatActivity {
             TipRecordPremium tipRecordPremium = new TipRecordPremium();
             tipRecordPremium.setBill(total);
             tipRecordPremium.setTipPercentage(tipPercentage);
-            tipRecordPremium.setTimestamp(new Date());
-            tipRecordPremium.setTipId(new Random().nextInt());
+            Date currentDate = new Date();
+            tipRecordPremium.setTimestamp(currentDate);
+            tipRecordPremium.setTipId(currentDate.getTime()); // unique always
             String strTip = String.format(getString(R.string.global_message_tip),
                     tipRecordPremium.getTip());
             txtTip.setVisibility(View.VISIBLE);
