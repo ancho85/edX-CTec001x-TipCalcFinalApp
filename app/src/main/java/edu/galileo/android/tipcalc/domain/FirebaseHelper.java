@@ -57,8 +57,7 @@ public class FirebaseHelper {
         dataReference.unauth();
     }
 
-    public Firebase getTipsReference(){
-        //return dataReference.getRoot().child(TIPS_PATH).child(getAuthUserId());
+    public Firebase getMyTipsReference(){
         return getMyUserReference().child(TIPS_PATH);
     }
 }

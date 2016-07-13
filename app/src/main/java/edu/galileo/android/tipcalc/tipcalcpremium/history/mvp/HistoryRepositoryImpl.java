@@ -2,7 +2,10 @@ package edu.galileo.android.tipcalc.tipcalcpremium.history.mvp;
 
 import android.util.Log;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,14 +22,12 @@ import edu.galileo.android.tipcalc.tipcalcpremium.history.events.HistoryEvent;
 public class HistoryRepositoryImpl implements HistoryRepository {
     private EventBus eventBus;
     private Firebase dataReference;
-    private Firebase userReference;
     private FirebaseHelper firebaseHelper;
 
     public HistoryRepositoryImpl(EventBus eventBus) {
         this.eventBus = eventBus;
         this.firebaseHelper = FirebaseHelper.getInstance();
         this.dataReference = this.firebaseHelper.getDataReference();
-        this.userReference = this.firebaseHelper.getMyUserReference();
     }
 
     @Override
@@ -38,30 +39,28 @@ public class HistoryRepositoryImpl implements HistoryRepository {
 
     @Override
     public void saveTip(final TipRecordPremium tipRecordPremium) {
-        /*Firebase userReference = firebaseHelper.getUserReference(tipRecordPremium.getFacebookUserId());
-        userReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        dataReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                TipRecordPremium tipRecord = dataSnapshot.getValue(TipRecordPremium.class);
-                if (tipRecord != null) {
-                    Firebase myReference = firebaseHelper.getUserReference(tipRecordPremium.getFacebookUserId());
-                    myReference.child(
-                            String.valueOf(tipRecordPremium.getTipId())
-                    ).setValue(String.valueOf(tipRecordPremium.getDateFormatted()));
-                    List<TipRecordPremium> items = Arrays.asList(tipRecordPremium);
-                    post(items, HistoryEvent.onHistoryAdded);
-                }else {
-                    post("Error onDataChange", HistoryEvent.onHistoryAdded);
-                }
+                String tipId = String.valueOf(tipRecordPremium.getTipId());
+                Firebase tipReference = firebaseHelper.getMyTipsReference().child(tipId);
+                tipReference.child("bill").setValue(tipRecordPremium.getBill());
+                tipReference.child("tipPercentage").setValue(tipRecordPremium.getTipPercentage());
+                tipReference.child("timestamp").setValue(tipRecordPremium.getDateFormatted());
+                tipReference.child("latitutde").setValue(tipRecordPremium.getLatitutde());
+                tipReference.child("longitude").setValue(tipRecordPremium.getLongitude());
+
+                List<TipRecordPremium> items = Arrays.asList(tipRecordPremium);
+                post(items, HistoryEvent.onHistoryAdded);
             }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
                 post("Error onCancelled: " + firebaseError.getMessage(), HistoryEvent.onHistoryAdded);
             }
-        });*/
-        List<TipRecordPremium> items = Arrays.asList(tipRecordPremium);
-        post(items, HistoryEvent.onHistoryAdded);
+        });
+        /*List<TipRecordPremium> items = Arrays.asList(tipRecordPremium);
+        post(items, HistoryEvent.onHistoryAdded);*/
         Log.d("REPOSITORY", "save tip");
     }
 
