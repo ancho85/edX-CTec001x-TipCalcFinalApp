@@ -5,7 +5,7 @@ Calculadora de propinas Final APP.
 - [x] Vista normal (anterior) intacta.
 - [x] Firebase con Facebook login. Guardar propinas por cada usuario con acceso.
 - [x] Firebase con Facebook login. Listar todas las propinas luego de acceso correcto.
-- [ ] Firebase con Facebook login. Borrar propinas con click largo. (Luego de salir y entrar a la app no está borrando, bug)
+- [x] Firebase con Facebook login. Borrar propinas con click largo. (Luego de salir y entrar a la app no está borrando, bug)
 - [x] Vista premium acceso vía menú a una actividad de login de facebook.
 - [x] Vista premium activado una vez logueado a facebook (y firebase)
 - [x] Vista premium desactivado una vez deslogueado de facebook.

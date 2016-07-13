@@ -42,6 +42,7 @@ public class HistoryRepositoryImpl implements HistoryRepository {
                 }else{
                     for (DataSnapshot child: dataSnapshot.getChildren()){
                         TipRecordPremium tipRecordPremium = child.getValue(TipRecordPremium.class);
+                        tipRecordPremium.setTipId(Long.valueOf(child.getKey()));
                         post(Arrays.asList(tipRecordPremium), HistoryEvent.onHistoryRetrieved);
                     }
                 }
