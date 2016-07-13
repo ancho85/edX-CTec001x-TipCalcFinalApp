@@ -1,15 +1,13 @@
 package edu.galileo.android.tipcalc.tipcalcpremium.history.mvp;
 
-import android.util.Log;
-
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import edu.galileo.android.tipcalc.domain.FirebaseHelper;
@@ -40,16 +38,13 @@ public class HistoryRepositoryImpl implements HistoryRepository {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()){
-                    TipRecordPremium tipRecordPremium = new TipRecordPremium();
-                    tipRecordPremium.setTimestamp(new Date());
-                    post(Arrays.asList(tipRecordPremium), HistoryEvent.onHistoryRetrieved);
+                    post(new ArrayList<TipRecordPremium>(), HistoryEvent.onHistoryRetrieved);
                 }else{
                     for (DataSnapshot child: dataSnapshot.getChildren()){
                         TipRecordPremium tipRecordPremium = child.getValue(TipRecordPremium.class);
                         post(Arrays.asList(tipRecordPremium), HistoryEvent.onHistoryRetrieved);
                     }
                 }
-
             }
 
             @Override
