@@ -2,12 +2,13 @@ package edu.galileo.android.tipcalc.tipcalcpremium.history.mvp;
 
 import android.util.Log;
 
+import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,6 +21,7 @@ import edu.galileo.android.tipcalc.tipcalcpremium.history.events.HistoryEvent;
  * Created by carlos.gomez on 10/07/2016.
  */
 public class HistoryRepositoryImpl implements HistoryRepository {
+    private static final String TAG = HistoryRepositoryImpl.class.getSimpleName();
     private EventBus eventBus;
     private Firebase dataReference;
     private FirebaseHelper firebaseHelper;
@@ -31,10 +33,38 @@ public class HistoryRepositoryImpl implements HistoryRepository {
     }
 
     @Override
-    public void getTipHistory(String facebookUserId) {
-        List<TipRecordPremium> items = new ArrayList<>();
-        post(items, HistoryEvent.onHistoryRetrieved);
-        Log.d("REPOSITORY", "getting tip history for facebook user id: " + facebookUserId);
+    public void getTipHistory() {
+        Log.d(TAG, "getting tip history for facebook user id: " + firebaseHelper.getAuthUserId());
+        Firebase tipReference = firebaseHelper.getMyTipsReference();
+        Query queryTips = tipReference.orderByKey();
+        queryTips.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                TipRecordPremium tipRecordPremium = dataSnapshot.getValue(TipRecordPremium.class);
+                Log.d(TAG, "Adding" + String.valueOf(tipRecordPremium.getDateFormatted()));
+                post(Arrays.asList(tipRecordPremium), HistoryEvent.onHistoryRetrieved);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -46,7 +76,7 @@ public class HistoryRepositoryImpl implements HistoryRepository {
                 Firebase tipReference = firebaseHelper.getMyTipsReference().child(tipId);
                 tipReference.child("bill").setValue(tipRecordPremium.getBill());
                 tipReference.child("tipPercentage").setValue(tipRecordPremium.getTipPercentage());
-                tipReference.child("timestamp").setValue(tipRecordPremium.getDateFormatted());
+                tipReference.child("timestamp").setValue(tipRecordPremium.getTimestamp());
                 tipReference.child("latitutde").setValue(tipRecordPremium.getLatitutde());
                 tipReference.child("longitude").setValue(tipRecordPremium.getLongitude());
                 tipReference.child("longitude").setValue(tipRecordPremium.getLongitude());
