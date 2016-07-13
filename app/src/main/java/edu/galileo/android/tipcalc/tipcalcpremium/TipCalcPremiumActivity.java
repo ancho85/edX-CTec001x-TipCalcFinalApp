@@ -1,10 +1,17 @@
 package edu.galileo.android.tipcalc.tipcalcpremium;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +25,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
+
 import java.util.Date;
 
 import butterknife.Bind;
@@ -30,7 +41,7 @@ import edu.galileo.android.tipcalc.tipcalcpremium.adapters.TipCalcPremiumPagerAd
 import edu.galileo.android.tipcalc.tipcalcpremium.extra.ui.ExtraFragment;
 import edu.galileo.android.tipcalc.tipcalcpremium.history.ui.HistoryFragment;
 
-public class TipCalcPremiumActivity extends AppCompatActivity {
+public class TipCalcPremiumActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -57,6 +68,10 @@ public class TipCalcPremiumActivity extends AppCompatActivity {
     @Bind(R.id.main_content)
     CoordinatorLayout mainContent;
 
+    private Location lastLocation;
+    private GoogleApiClient googleApiClient;
+    private static final int PERMISSIONS_REQUEST_LOCATION = 1;
+
     private static final int TIP_STEP_CHANGE = 1;
     private static final int DEFAULT_TIP_PERCENTAGE = 10;
 
@@ -67,19 +82,20 @@ public class TipCalcPremiumActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         setupAdapter();
+        setupGoogleAPIClient();
     }
 
     private void setupAdapter() {
-            Fragment[] fragments = new Fragment[]{new HistoryFragment(), new ExtraFragment()};
-            String[] titles = new String[]{
-                    getString(R.string.tipcalcpremium_header_history),
-                    getString(R.string.tipcalcpremium_header_extra)};
-            TipCalcPremiumPagerAdapter adapter =
-                    new TipCalcPremiumPagerAdapter(getSupportFragmentManager(),
-                            titles, fragments);
-            container.setAdapter(adapter);
-            tabs.setupWithViewPager(container);
-        }
+        Fragment[] fragments = new Fragment[]{new HistoryFragment(), new ExtraFragment()};
+        String[] titles = new String[]{
+                getString(R.string.tipcalcpremium_header_history),
+                getString(R.string.tipcalcpremium_header_extra)};
+        TipCalcPremiumPagerAdapter adapter =
+                new TipCalcPremiumPagerAdapter(getSupportFragmentManager(),
+                        titles, fragments);
+        container.setAdapter(adapter);
+        tabs.setupWithViewPager(container);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -115,6 +131,10 @@ public class TipCalcPremiumActivity extends AppCompatActivity {
             Date currentDate = new Date();
             tipRecordPremium.setTimestamp(currentDate);
             tipRecordPremium.setTipId(currentDate.getTime()); // unique always
+            if (lastLocation != null) { //may haven't granted permissions
+                tipRecordPremium.setLatitutde(lastLocation.getLatitude());
+                tipRecordPremium.setLongitude(lastLocation.getLongitude());
+            }
             String strTip = String.format(getString(R.string.global_message_tip),
                     tipRecordPremium.getTip());
             txtTip.setVisibility(View.VISIBLE);
@@ -168,5 +188,47 @@ public class TipCalcPremiumActivity extends AppCompatActivity {
             Log.e(getLocalClassName(), Log.getStackTraceString(npe));
         }
 
+    }
+
+    @Override
+    protected void onStart() {
+        googleApiClient.connect();
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        googleApiClient.disconnect();
+        super.onStop();
+    }
+
+    private void setupGoogleAPIClient() {
+        if (googleApiClient == null) {
+            googleApiClient = new GoogleApiClient.Builder(this)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(this)
+                    .addApi(LocationServices.API)
+                    .build();
+        }
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        lastLocation = LocationServices.FusedLocationApi.getLastLocation(googleApiClient);
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+        googleApiClient.connect();
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        String errorMsg = connectionResult.getErrorMessage() == null ? "Google API connection failed" : connectionResult.getErrorMessage();
+        Snackbar.make(mainContent, errorMsg, Snackbar.LENGTH_SHORT).show();
     }
 }
