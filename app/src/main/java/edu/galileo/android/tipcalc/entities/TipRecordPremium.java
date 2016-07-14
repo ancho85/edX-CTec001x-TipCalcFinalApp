@@ -84,7 +84,7 @@ public class TipRecordPremium extends BaseModel {
     }
 
     public String getDateFormatted() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE, dd mmm yyyy HH:mm:ss zzz", Locale.getDefault());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEE, dd mm yyyy HH:mm:ss", Locale.getDefault());
         return simpleDateFormat.format(timestamp);
     }
 

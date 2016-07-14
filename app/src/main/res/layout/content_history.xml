@@ -8,53 +8,106 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/lblBill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:text="@string/tipcalcpremium_history_lbl_bill"/>
 
         <TextView
             android:id="@+id/txtBill"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/activity_horizontal_margin"/>
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_toEndOf="@id/lblBill"
+            android:layout_toRightOf="@id/lblBill"/>
+
+        <TextView
+            android:id="@+id/lblPercentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lblBill"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:text="@string/tipcalcpremium_history_lbl_percent"/>
 
         <TextView
             android:id="@+id/txtPercentage"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtBill"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/activity_horizontal_margin"/>
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_toEndOf="@id/lblPercentage"
+            android:layout_toRightOf="@id/lblPercentage"/>
 
         <TextView
             android:id="@+id/txtDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtPercentage"
-            android:layout_centerHorizontal="true"
+            android:layout_below="@id/lblPercentage"
+            android:textSize="12sp"
             android:layout_margin="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+            android:id="@+id/lblLatitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtDate"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:text="@string/tipcalcpremium_history_lbl_latitude"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/txtLatitude"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtDate"
+            android:layout_below="@id/lblLatitude"
             android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/activity_horizontal_margin"/>
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/lblLongitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtLatitude"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:text="@string/tipcalcpremium_history_lbl_longitude"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/txtLongitude"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtLatitude"
+            android:layout_below="@id/lblLongitude"
             android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/activity_horizontal_margin"/>
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/lblTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtLongitude"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:text="@string/tipcalcpremium_history_lbl_total"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/txtBillFinalTotal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtLongitude"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/activity_horizontal_margin"/>
+            android:layout_below="@id/lblLongitude"
+            android:layout_toRightOf="@id/lblTotal"
+            android:layout_toEndOf="@id/lblTotal"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:gravity="end"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
     </RelativeLayout>
 </android.support.v7.widget.CardView>
