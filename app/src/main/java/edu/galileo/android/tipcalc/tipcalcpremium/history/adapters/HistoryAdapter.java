@@ -4,7 +4,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.facebook.share.widget.SendButton;
+import com.facebook.share.widget.ShareButton;
 
 import java.util.List;
 
@@ -43,21 +47,21 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         holder.txtBillFinalTotal.setText(String.valueOf(tipRecordPremium.getTip()));
     }
 
-    public void setItems(List<TipRecordPremium> newItems){
+    public void setItems(List<TipRecordPremium> newItems) {
         items.addAll(newItems);
         notifyDataSetChanged();
     }
 
-    public void add(TipRecordPremium tipRecordPremium){
+    public void add(TipRecordPremium tipRecordPremium) {
         items.add(0, tipRecordPremium);
-        notifyItemInserted(getItemCount()-1);
+        notifyItemInserted(getItemCount() - 1);
         notifyDataSetChanged();
     }
 
-    public void delete(TipRecordPremium tipRecordPremium){
+    public void delete(TipRecordPremium tipRecordPremium) {
         int position = 0;
-        for (TipRecordPremium item: items){
-            if (item.getTipId() == tipRecordPremium.getTipId()){
+        for (TipRecordPremium item : items) {
+            if (item.getTipId() == tipRecordPremium.getTipId()) {
                 items.remove(position);
                 notifyDataSetChanged();
                 break;
@@ -84,6 +88,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         TextView txtLatitude;
         @Bind(R.id.txtLongitude)
         TextView txtLongitude;
+        @Bind(R.id.fbShare)
+        ShareButton fbShare;
+        @Bind(R.id.fbSend)
+        SendButton fbSend;
+        @Bind(R.id.imgMyLocation)
+        ImageView imgMyLocation;
 
         private View view;
 
@@ -105,6 +115,24 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 public boolean onLongClick(View view) {
                     listener.onItemLongClick(tipRecordPremium);
                     return false;
+                }
+            });
+            fbShare.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onFbShareClick(tipRecordPremium);
+                }
+            });
+            fbSend.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onFbSendClick(tipRecordPremium);
+                }
+            });
+            imgMyLocation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onMyLocationClick(tipRecordPremium);
                 }
             });
         }

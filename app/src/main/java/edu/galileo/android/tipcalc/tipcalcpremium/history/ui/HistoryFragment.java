@@ -1,12 +1,15 @@
 package edu.galileo.android.tipcalc.tipcalcpremium.history.ui;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -154,6 +158,24 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage("Desea borrar la propina del historial?").setPositiveButton("SI", dialogClickListener)
                 .setNegativeButton("NO", dialogClickListener).show();
+    }
+
+    @Override
+    public void onFbShareClick(TipRecordPremium tipRecordPremium) {
+        Log.d("FBSHARECLICK", tipRecordPremium.getTipId().toString());
+    }
+
+    @Override
+    public void onFbSendClick(TipRecordPremium tipRecordPremium) {
+        Log.d("FBSENDCLICK", tipRecordPremium.getTipId().toString());
+    }
+
+    @Override
+    public void onMyLocationClick(TipRecordPremium tipRecordPremium) {
+        String uri = String.format(Locale.ENGLISH,
+                "geo:%f,%f", tipRecordPremium.getLatitutde(), tipRecordPremium.getLongitude());
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+        getContext().startActivity(intent);
     }
 
     private void showSnackbar(String msgText) {
