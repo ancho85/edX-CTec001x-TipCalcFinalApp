@@ -1,8 +1,10 @@
 package edu.galileo.android.tipcalc.tipcalcpremium.history.ui;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -134,8 +136,24 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
     }*/
 
     @Override
-    public void onItemLongClick(TipRecordPremium tipRecordPremium) {
-        deleteFromHistory(tipRecordPremium);
+    public void onItemLongClick(final TipRecordPremium tipRecordPremium) {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                        deleteFromHistory(tipRecordPremium);
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        //No button clicked
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Desea borrar la propina del historial?").setPositiveButton("SI", dialogClickListener)
+                .setNegativeButton("NO", dialogClickListener).show();
     }
 
     private void showSnackbar(String msgText) {
