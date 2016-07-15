@@ -15,7 +15,8 @@ Calculadora de propinas Final APP.
 - [ ] HorizontalScrollView + LinearLayout + button rounded corner background para selección de clasificación de servicio
 - [x] ViewPager que incluirá CardViews del histórico de propinas
 - [x] Cada propina calculada guardará la ubicación donde se hizo el cálculo
-- [ ] Cada propina podrá ser compartida en facebook app y en el messenger
+- [x] Cada propina podrá ser compartida en facebook app y en el messenger
+- [x] Cada propina podrá verse en el mapa de acuerdo a las coordenadas guardadas
 - [x] Retrofit para obtener cotización de moneda paraguaya desde api
 - [ ] FloatingButton para abrir otra actividad/fragment y visualizar la cotización del día
 - [ ] Total food
