@@ -144,7 +144,7 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                switch (which){
+                switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
                         deleteFromHistory(tipRecordPremium);
                         break;
@@ -158,16 +158,6 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setMessage("Desea borrar la propina del historial?").setPositiveButton("SI", dialogClickListener)
                 .setNegativeButton("NO", dialogClickListener).show();
-    }
-
-    @Override
-    public void onFbShareClick(TipRecordPremium tipRecordPremium) {
-        Log.d("FBSHARECLICK", tipRecordPremium.getTipId().toString());
-    }
-
-    @Override
-    public void onFbSendClick(TipRecordPremium tipRecordPremium) {
-        Log.d("FBSENDCLICK", tipRecordPremium.getTipId().toString());
     }
 
     @Override

@@ -8,7 +8,5 @@ import edu.galileo.android.tipcalc.entities.TipRecordPremium;
 public interface OnItemClickListener {
     //void onItemClick(TipRecordPremium tipRecordPremium);
     void onItemLongClick(TipRecordPremium tipRecordPremium);
-    void onFbShareClick(TipRecordPremium tipRecordPremium);
-    void onFbSendClick(TipRecordPremium tipRecordPremium);
     void onMyLocationClick(TipRecordPremium tipRecordPremium);
 }

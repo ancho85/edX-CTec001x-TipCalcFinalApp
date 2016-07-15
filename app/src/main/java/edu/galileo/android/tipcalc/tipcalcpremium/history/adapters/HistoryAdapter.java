@@ -1,5 +1,6 @@
 package edu.galileo.android.tipcalc.tipcalcpremium.history.adapters;
 
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.SendButton;
 import com.facebook.share.widget.ShareButton;
 
@@ -117,24 +119,22 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                     return false;
                 }
             });
-            fbShare.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    listener.onFbShareClick(tipRecordPremium);
-                }
-            });
-            fbSend.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    listener.onFbSendClick(tipRecordPremium);
-                }
-            });
             imgMyLocation.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     listener.onMyLocationClick(tipRecordPremium);
                 }
             });
+            ShareLinkContent content = new ShareLinkContent.Builder()
+                    .setContentUrl(Uri.parse("http://www.last.fm/user/ancho85"))
+                    .setContentTitle("He dejado una propina con TipCalcFinalApp")
+                    .setContentDescription("Total: " +
+                            String.valueOf(tipRecordPremium.getBill()) +
+                            " aplicando un porcentaje de " + String.valueOf(tipRecordPremium.getTipPercentage()) +
+                            " el día " + tipRecordPremium.getDateFormatted())
+                    .build();
+            fbShare.setShareContent(content);
+            fbSend.setShareContent(content);
         }
     }
 }
