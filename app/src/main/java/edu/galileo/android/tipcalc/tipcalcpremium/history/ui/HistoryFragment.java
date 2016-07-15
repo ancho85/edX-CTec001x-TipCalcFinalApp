@@ -48,6 +48,7 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
         ButterKnife.bind(this, view);
         setupInjection();
         setupRecyclerView();
+        presenter.getTipHistory();
         return view;
     }
 
@@ -73,7 +74,6 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
     public void onResume() {
         super.onResume();
         presenter.onResume();
-        presenter.getTipHistory();
     }
 
     @Override

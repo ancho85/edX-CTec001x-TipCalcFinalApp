@@ -50,7 +50,11 @@ public class FirebaseHelper {
     }
 
     public Firebase getMyUserReference() {
-        return getUserReference(getAuthUserId());
+        String userId = getAuthUserId();
+        if (userId == null){
+            userId = "";
+        }
+        return getUserReference(userId);
     }
 
     public void signOff(){
