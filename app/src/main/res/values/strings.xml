@@ -23,4 +23,9 @@
     <string name="tipcalcpremium_history_lbl_longitude">Lon.</string>
     <string name="tipcalcpremium_history_lbl_total">$$</string>
     <string name="tipcalcpremium.menu.action.historyrefresh">Actualizar historia</string>
+    <string name="tipcalcpremium.extra.lbl.entity">Entidad</string>
+    <string name="tipcalcpremium.extra.lbl.purchase">Compra</string>
+    <string name="tipcalcpremium.extra.lbl.sale">Venta</string>
+    <string name="tipcalcpremium.extra.lbl.dayreference">Referencia diaria</string>
+    <string name="tipcalcpremium.extra.lbl.lastupdate">Última actualización</string>
 </resources>

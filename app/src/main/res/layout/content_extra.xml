@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/lblEntity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tipcalcpremium.extra.lbl.entity"/>
+
+        <TextView
+            android:id="@+id/txtEntity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lblEntity"/>
+
+        <TextView
+            android:id="@+id/lblPurchase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtEntity"
+            android:text="@string/tipcalcpremium.extra.lbl.purchase"/>
+
+        <TextView
+            android:id="@+id/txtPurchase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lblPurchase"/>
+
+        <TextView
+            android:id="@+id/lblSale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtPurchase"
+            android:text="@string/tipcalcpremium.extra.lbl.sale"/>
+
+        <TextView
+            android:id="@+id/txtSale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lblSale"/>
+
+        <TextView
+            android:id="@+id/lblDayReference"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtSale"
+            android:text="@string/tipcalcpremium.extra.lbl.dayreference"/>
+
+        <TextView
+            android:id="@+id/txtDayReference"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lblDayReference"/>
+
+        <TextView
+            android:id="@+id/lblLastUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtDayReference"
+            android:text="@string/tipcalcpremium.extra.lbl.lastupdate"/>
+
+        <TextView
+            android:id="@+id/txtLastUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lblLastUpdate"/>
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+</android.support.v7.widget.CardView>
