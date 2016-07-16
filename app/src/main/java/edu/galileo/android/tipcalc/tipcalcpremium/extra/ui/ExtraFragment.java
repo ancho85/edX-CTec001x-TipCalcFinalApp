@@ -12,11 +12,15 @@ import android.widget.ProgressBar;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import edu.galileo.android.tipcalc.R;
+import edu.galileo.android.tipcalc.TipCalcApp;
 import edu.galileo.android.tipcalc.entities.DolarPy;
 import edu.galileo.android.tipcalc.tipcalcpremium.extra.adapters.ExtraAdapter;
+import edu.galileo.android.tipcalc.tipcalcpremium.extra.di.ExtraComponent;
 import edu.galileo.android.tipcalc.tipcalcpremium.extra.mvp.ExtraPresenter;
 import edu.galileo.android.tipcalc.tipcalcpremium.extra.mvp.ExtraView;
 
@@ -31,7 +35,9 @@ public class ExtraFragment extends Fragment implements ExtraView {
     @Bind(R.id.framelayoutcontainer)
     FrameLayout container;
 
+    @Inject
     ExtraAdapter adapter;
+    @Inject
     ExtraPresenter presenter;
 
     public ExtraFragment() {
@@ -42,7 +48,14 @@ public class ExtraFragment extends Fragment implements ExtraView {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_content, container, false);
         ButterKnife.bind(this, view);
+        setupInjection();
         return view;
+    }
+
+    private void setupInjection() {
+        TipCalcApp app = (TipCalcApp) getActivity().getApplication();
+        ExtraComponent extraComponent = app.getExtraComponent(this, this);
+        extraComponent.inject(this);
     }
 
     @Override

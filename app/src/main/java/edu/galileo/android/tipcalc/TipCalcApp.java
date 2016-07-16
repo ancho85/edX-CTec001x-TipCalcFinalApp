@@ -12,6 +12,10 @@ import com.raizlabs.android.dbflow.config.FlowManager;
 import edu.galileo.android.tipcalc.domain.FirebaseHelper;
 import edu.galileo.android.tipcalc.libs.di.LibsModule;
 import edu.galileo.android.tipcalc.tipcalc.ui.MainActivity;
+import edu.galileo.android.tipcalc.tipcalcpremium.extra.di.DaggerExtraComponent;
+import edu.galileo.android.tipcalc.tipcalcpremium.extra.di.ExtraComponent;
+import edu.galileo.android.tipcalc.tipcalcpremium.extra.di.ExtraModule;
+import edu.galileo.android.tipcalc.tipcalcpremium.extra.mvp.ExtraView;
 import edu.galileo.android.tipcalc.tipcalcpremium.history.adapters.OnItemClickListener;
 import edu.galileo.android.tipcalc.tipcalcpremium.history.di.DaggerHistoryComponent;
 import edu.galileo.android.tipcalc.tipcalcpremium.history.di.HistoryComponent;
@@ -78,6 +82,14 @@ public class TipCalcApp extends Application {
                 .builder()
                 .libsModule(new LibsModule(fragment))
                 .historyModule(new HistoryModule(view, listener))
+                .build();
+    }
+
+    public ExtraComponent getExtraComponent(Fragment fragment, ExtraView view){
+        return DaggerExtraComponent
+                .builder()
+                .libsModule(new LibsModule(fragment))
+                .extraModule(new ExtraModule(fragment.getContext(), view))
                 .build();
     }
 }
