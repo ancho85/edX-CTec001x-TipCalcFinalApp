@@ -23,7 +23,7 @@ public class ExtraEvent {
         return items;
     }
 
-    public void setImages(List<DolarPy> items) {
+    public void setItems(List<DolarPy> items) {
         this.items = items;
     }
 }
