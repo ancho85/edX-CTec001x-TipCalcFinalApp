@@ -22,4 +22,5 @@
     <string name="tipcalcpremium_history_lbl_latitude">Lat.</string>
     <string name="tipcalcpremium_history_lbl_longitude">Lon.</string>
     <string name="tipcalcpremium_history_lbl_total">$$</string>
+    <string name="tipcalcpremium.menu.action.historyrefresh">Actualizar historia</string>
 </resources>

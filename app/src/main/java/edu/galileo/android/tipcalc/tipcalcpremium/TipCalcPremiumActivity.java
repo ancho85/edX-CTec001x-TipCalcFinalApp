@@ -108,8 +108,16 @@ public class TipCalcPremiumActivity extends AppCompatActivity implements GoogleA
         int id = item.getItemId();
         if (id == R.id.action_logout) {
             logout();
+        }else if (id == R.id.action_refresh){
+            refreshHistory();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void refreshHistory() {
+        TipCalcPremiumPagerAdapter adapter = (TipCalcPremiumPagerAdapter) container.getAdapter();
+        HistoryFragment fragment = (HistoryFragment) adapter.getItem(0);
+        fragment.tipShow();
     }
 
     private void logout() {

@@ -15,6 +15,7 @@ public interface HistoryView {
 
     void tipAdded();
     void tipDeleted();
+    void tipShow();
 
     void onError(String error);
     void setContent(List<TipRecordPremium> items);

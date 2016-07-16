@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +53,7 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
         ButterKnife.bind(this, view);
         setupInjection();
         setupRecyclerView();
-        presenter.getTipHistory();
+        tipShow();
         return view;
     }
 
@@ -92,6 +91,12 @@ public class HistoryFragment extends Fragment implements HistoryView, OnItemClic
     public void onDestroy() {
         super.onDestroy();
         presenter.onDestroy();
+    }
+
+    @Override
+    public void tipShow() {
+        adapter.deleteAll();
+        presenter.getTipHistory();
     }
 
     @Override
