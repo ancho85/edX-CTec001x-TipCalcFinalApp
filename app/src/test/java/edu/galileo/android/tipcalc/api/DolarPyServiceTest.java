@@ -9,12 +9,10 @@ import org.robolectric.util.ActivityController;
 
 import edu.galileo.android.tipcalc.BaseTest;
 import edu.galileo.android.tipcalc.BuildConfig;
-import edu.galileo.android.tipcalc.entities.DolarPy;
 import edu.galileo.android.tipcalc.tipcalc.ui.MainActivity;
 import retrofit2.Call;
 import retrofit2.Response;
 
-import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 
@@ -46,9 +44,10 @@ public class DolarPyServiceTest extends BaseTest {
         assertTrue(response.isSuccess());
 
         DolarPyResponse dolarPyResponse = response.body();
-        assertEquals(1, dolarPyResponse.getCount());
-
-        DolarPy dolarPy = dolarPyResponse.getFirstDolarPy();
-        assertNotNull(dolarPy);
+        assertNotNull(dolarPyResponse.getdolarpy());
+        assertNotNull(dolarPyResponse.getdolarpy().getbcp());
+        assertNotNull(dolarPyResponse.getdolarpy().getbcp().getCompra());
+        assertNotNull(dolarPyResponse.getdolarpy().getbcp().getVenta());
+        assertNotNull(dolarPyResponse.getdolarpy().getbcp().getReferencial_diario());
     }
 }
