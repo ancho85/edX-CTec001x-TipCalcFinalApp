@@ -12,67 +12,86 @@
 
         <TextView
             android:id="@+id/lblEntity"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tipcalcpremium.extra.lbl.entity"/>
+            android:text="@string/tipcalcpremium.extra.lbl.entity"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/txtEntity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/lblEntity"/>
+            android:layout_toEndOf="@id/lblEntity"
+            android:layout_toRightOf="@id/lblEntity"
+            android:gravity="end"/>
 
         <TextView
             android:id="@+id/lblPurchase"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtEntity"
-            android:text="@string/tipcalcpremium.extra.lbl.purchase"/>
+            android:layout_below="@id/lblEntity"
+            android:text="@string/tipcalcpremium.extra.lbl.purchase"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/txtPurchase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/lblPurchase"/>
+            android:layout_below="@id/txtEntity"
+            android:layout_toEndOf="@id/lblPurchase"
+            android:layout_toRightOf="@id/lblPurchase"
+            android:gravity="end"/>
 
         <TextView
             android:id="@+id/lblSale"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtPurchase"
-            android:text="@string/tipcalcpremium.extra.lbl.sale"/>
+            android:layout_below="@id/lblPurchase"
+            android:text="@string/tipcalcpremium.extra.lbl.sale"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/txtSale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/lblSale"/>
+            android:layout_below="@id/txtPurchase"
+            android:layout_toEndOf="@id/lblSale"
+            android:layout_toRightOf="@id/lblSale"
+            android:gravity="end"/>
 
         <TextView
             android:id="@+id/lblDayReference"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtSale"
-            android:text="@string/tipcalcpremium.extra.lbl.dayreference"/>
+            android:layout_below="@id/lblSale"
+            android:text="@string/tipcalcpremium.extra.lbl.dayreference"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/txtDayReference"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/lblDayReference"/>
+            android:layout_below="@id/txtSale"
+            android:layout_toEndOf="@id/lblDayReference"
+            android:layout_toRightOf="@id/lblDayReference"
+            android:gravity="end"/>
 
         <TextView
             android:id="@+id/lblLastUpdate"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtDayReference"
-            android:text="@string/tipcalcpremium.extra.lbl.lastupdate"/>
+            android:layout_below="@id/lblDayReference"
+            android:text="@string/tipcalcpremium.extra.lbl.lastupdate"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/txtLastUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/lblLastUpdate"/>
+            android:layout_below="@id/txtDayReference"
+            android:layout_toEndOf="@id/lblLastUpdate"
+            android:layout_toRightOf="@id/lblLastUpdate"
+            android:gravity="end"/>
     </RelativeLayout>
 
     <ProgressBar
