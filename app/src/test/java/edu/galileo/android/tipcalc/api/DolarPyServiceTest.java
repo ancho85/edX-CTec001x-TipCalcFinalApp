@@ -40,7 +40,7 @@ public class DolarPyServiceTest extends BaseTest {
 
     @Test
     public void testGetCurrency() throws Exception {
-        Call<DolarPyResponse> call = service.getCurrencyRates("");
+        Call<DolarPyResponse> call = service.getCurrencyRates();
 
         Response<DolarPyResponse> response = call.execute();
         assertTrue(response.isSuccess());

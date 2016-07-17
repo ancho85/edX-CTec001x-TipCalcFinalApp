@@ -2,6 +2,9 @@ package edu.galileo.android.tipcalc.api;
 
 import android.content.Context;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.KeyManagementException;
@@ -25,12 +28,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class DolarPyClient {
     private Retrofit retrofit;
-    private final static String BASE_URL = "https://dolar.melizeche.com/api/1.0/";
+    private final static String BASE_URL = "https://dolar.melizeche.com";
 
     public DolarPyClient(Context context) {
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(getClient(context))
                 .build();
     }

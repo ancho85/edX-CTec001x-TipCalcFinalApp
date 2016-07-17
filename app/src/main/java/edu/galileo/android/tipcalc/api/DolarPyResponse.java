@@ -1,38 +1,30 @@
 package edu.galileo.android.tipcalc.api;
 
-import java.util.List;
+import java.util.Date;
 
-import edu.galileo.android.tipcalc.entities.DolarPy;
+import edu.galileo.android.tipcalc.api.models.MoneyExchange;
 
 /**
  * Created by carlos.gomez on 08/07/2016.
  */
 public class DolarPyResponse {
-    private int count;
+        private MoneyExchange dolarpy;
 
-    private List<DolarPy> dolarPyList;
+        private Date updated;
 
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public List<DolarPy> getDolarPyList() {
-        return dolarPyList;
-    }
-
-    public void setRecipes(List<DolarPy> dolarPyLists) {
-        this.dolarPyList = dolarPyLists;
-    }
-
-    public DolarPy getFirstDolarPy() {
-        DolarPy first = null;
-        if (!dolarPyList.isEmpty()) {
-            first = dolarPyList.get(0);
+        public MoneyExchange getdolarpy() {
+            return dolarpy;
         }
-        return first;
+
+        public void setdolarpy(MoneyExchange dolarpy) {
+            this.dolarpy = dolarpy;
+        }
+
+        public Date getUpdated() {
+            return updated;
+        }
+
+        public void setUpdated(Date updated) {
+            this.updated = updated;
+        }
     }
-}
